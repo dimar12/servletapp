@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS sheet (
+    id SERIAL PRIMARY KEY,
+    fio VARCHAR(100) NOT NULL,
+    post VARCHAR(100) NOT NULL,
+    date date NOT NULL,
+    time VARCHAR(100) NOT NULL,
+    reason VARCHAR(100) NOT NULL
+    );

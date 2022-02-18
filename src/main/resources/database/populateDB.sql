@@ -1,0 +1,1 @@
+INSERT INTO sheet(fio, post, date, time, reason)VALUES ('Ivan', 'Boss', to_date('2022 - 02 - 17', ' yyyy - mm - dd '), '3 hourse', 'Sleep')
