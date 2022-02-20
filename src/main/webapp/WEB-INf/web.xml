@@ -4,11 +4,25 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <servlet>
-        <servlet-name>Sheet</servlet-name>
-        <servlet-class>Package.Sheet</servlet-class>
+        <servlet-name>Form</servlet-name>
+        <servlet-class>Servlets.FormServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Sheet</servlet-name>
-        <url-pattern>/sheet</url-pattern>
+        <servlet-name>Form</servlet-name>
+        <url-pattern>/form</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>Servlets.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/static/*</url-pattern>
     </servlet-mapping>
 </web-app>
