@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class FormServlet extends HttpServlet {
 
@@ -20,6 +20,32 @@ public class FormServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String selectNameSQL = "select fio from name";
+        String selectPostSQL = "select post from post";
+        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<String> posts = new ArrayList<String>();
+        try {
+            Class.forName(JDBC_DRIVER);
+            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD);
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(selectNameSQL);
+            while (rs.next()) {
+                names.add(rs.getString("fio"));
+            }
+            rs = statement.executeQuery(selectPostSQL);
+            while (rs.next()) {
+                posts.add(rs.getString("post"));
+            }
+            statement.close();
+            connection.close();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        req.setAttribute("names",names);
+        req.setAttribute("posts",posts);
         getServletContext().getRequestDispatcher("/form.jsp").forward(req,resp);
     }
 
@@ -37,6 +63,6 @@ public class FormServlet extends HttpServlet {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-        getServletContext().getRequestDispatcher("/form.jsp").forward(req,resp);
+        doGet(req,resp);
     }
 }

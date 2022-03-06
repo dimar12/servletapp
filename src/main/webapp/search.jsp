@@ -8,11 +8,16 @@
 <body>
 <h1>Поиск запесей об отсутсви на работе</h1>
 <br/>
+<% List<String> names = (List) request.getAttribute("names"); %>
 <form method="post" action="/my-app/search">
     <ul>
         <li>
             <label for="name">ФИО:</label>
-            <input type="text" id="name" name="name">
+            <select id="name" name="name">
+                <% for (String name : names) { %>
+                <option><%= name %></option>
+                <% } %>
+            </select>
         </li>
         <li>
             <label for="date">Дата отсутствия:</label>
@@ -22,8 +27,7 @@
     <input type="submit" value="Submit"/>
 </form>
 <br/>
-<% List<Sheet> sheets = (List) request.getAttribute("sheets");
-%>
+<% List<Sheet> sheets = (List) request.getAttribute("sheets"); %>
 <table>
     <% for (Sheet sheet : sheets) { %>
     <tr>
