@@ -29,15 +29,15 @@
         </li>
         <li>
             <label for="date">Дата отсутствия:</label>
-            <input type="date" id="date" name="date">
+            <input type="date" id="date" name="date" required>
         </li>
         <li>
             <label for="time">Время отсутствия:</label>
-            <input type="text" id="time" name="time">
+            <input type="text" id="time" name="time" required>
         </li>
         <li>
             <label for="reason">Причина отсутствия:</label>
-            <textarea id="reason" name="reason"></textarea>
+            <textarea id="reason" name="reason" required></textarea>
         </li>
     </ul>
     <input type="submit" value="Submit"/>
